@@ -1,9 +1,14 @@
-from pygoogle_image import image as pi
+number_of_images = 2
 
-with open("test.csv") as file_in:
-    lines = []
-    for line in file_in:
-        pi.download(line,limit=3)
-        print(f"-- {line} :: download completed ---")
+try:
+    from pygoogle_image import image as pi
 
-print("Process Successfully Completed")
+    with open("test.csv") as file_in:
+        lines = []
+        for line in file_in:
+            pi.download(line,limit=number_of_images)
+            print(f"-- {line} :: download completed ---")
+
+    print("Process Successfully Completed")
+except:
+    print("Error occured")
