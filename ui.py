@@ -11,6 +11,7 @@ class MyGUI(QMainWindow):
         # event handlers
         self.btnBrowse.clicked.connect(self.get_file_location)
         self.btnLoad.clicked.connect(self.load_content)
+        self.btnDownload.clicked.connect(self.bulk_download)
 
 
     def get_file_location(self):
@@ -33,7 +34,9 @@ class MyGUI(QMainWindow):
         self.lstLog.addItem(f"No. of entries loaded : {number_of_entries}")
         self.lstLog.addItem(f"Number of images to be downloaded : {number_of_entries} x {number_of_images} = {int(number_of_entries) * int(number_of_images)}")
 
-
+    def bulk_download(self):
+        xyz = self.lstEntries.item(1)
+        xyz = self.lstEntries.item(0)
 
 def main():
     app = QApplication([])
