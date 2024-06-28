@@ -66,7 +66,7 @@ class MyGUI(QMainWindow):
                 self.lstLog.addItem(f"Number of images to be downloaded : {self.lstEntries.count()} x {self.txtEntries.toPlainText()} = {int(self.lstEntries.count()) * int(self.txtEntries.toPlainText())}")
 
                 for i in range(self.lstEntries.count()):
-                    pi.download(self.lstEntries.item(i).text(),limit=self.txtEntries.toPlainText()
+                    # pi.download(self.lstEntries.item(i).text(),limit=self.txtEntries.toPlainText()
                     self.lstLog.addItem(f"Downloading {self.lstEntries.item(i).text()} entry....")
                     pass
                 self.lstLog.addItem(f"Download Completed Successfully!!!")
