@@ -1,5 +1,1 @@
-gtr r35
-mazda rx7
-nissan silvia s14
-honda nsx
-toyota mark ii
+gtr r34
