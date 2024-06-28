@@ -1,5 +1,6 @@
 from PyQt6.QtWidgets import *
 from PyQt6 import uic
+from pygoogle_image import image as pi
 
 class MyGUI(QMainWindow):
     fileName = ""
@@ -27,16 +28,25 @@ class MyGUI(QMainWindow):
         file = open(str(self.fileName), 'r')
         for entry in file:
             entry = entry.strip()
-            self.lstEntries.addItem(entry)
+            listWidgetItem = QListWidgetItem(str(entry))
+            self.lstEntries.addItem(listWidgetItem)
         
         number_of_entries = self.lstEntries.count()
         number_of_images = self.txtEntries.toPlainText()
         self.lstLog.addItem(f"No. of entries loaded : {number_of_entries}")
-        self.lstLog.addItem(f"Number of images to be downloaded : {number_of_entries} x {number_of_images} = {int(number_of_entries) * int(number_of_images)}")
+        
+        # make this fir diwkiad button
+        #self.lstLog.addItem(f"Number of images to be downloaded : {number_of_entries} x {number_of_images} = {int(number_of_entries) * int(number_of_images)}")
 
     def bulk_download(self):
-        xyz = self.lstEntries.item(1)
-        xyz = self.lstEntries.item(0)
+        self.btnDownload.setEnabled(False)
+        for i in range(self.lstEntries.count()):
+            # print(self.lstEntries.item(i).text())
+            pi.download(self.lstEntries.item(i).text(),limit=self.txtEntries.toPlainText())
+        self.lstLog.addItem(f"Download Complete Successfully!!!")
+        
+
+
 
 def main():
     app = QApplication([])
