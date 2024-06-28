@@ -1,6 +1,6 @@
 from PyQt6.QtWidgets import *
 from PyQt6 import uic
-from pygoogle_image import image as pi
+# from pygoogle_image import image as pi
 
 class MyGUI(QMainWindow):
     fileName = ""
@@ -39,11 +39,19 @@ class MyGUI(QMainWindow):
         #self.lstLog.addItem(f"Number of images to be downloaded : {number_of_entries} x {number_of_images} = {int(number_of_entries) * int(number_of_images)}")
 
     def bulk_download(self):
-        self.btnDownload.setEnabled(False)
-        for i in range(self.lstEntries.count()):
-            # print(self.lstEntries.item(i).text())
-            pi.download(self.lstEntries.item(i).text(),limit=self.txtEntries.toPlainText())
-        self.lstLog.addItem(f"Download Complete Successfully!!!")
+        reply = QMessageBox.question(self, 'Message', "Are you sure you want to download?", QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No, QMessageBox.StandardButton.No)
+        
+        if reply == QMessageBox.StandardButton.Yes:
+            self.btnDownload.setEnabled(False)
+            for i in range(self.lstEntries.count()):
+                # print(self.lstEntries.item(i).text())
+                # pi.download(self.lstEntries.item(i).text(),limit=self.txtEntries.toPlainText()
+                pass
+            self.lstLog.addItem(f"Download Complete Successfully!!!")
+            self.btnDownload.setEnabled(True)
+        else:
+            pass
+
         
 
 
