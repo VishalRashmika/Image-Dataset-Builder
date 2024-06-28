@@ -13,11 +13,16 @@ class MyGUI(QMainWindow):
 
 
     def get_file_location(self):
-        fileName = QFileDialog.getOpenFileName(self,"Open File","c:\\gui\\images","All Files (*);;Python Files (*.py);; PNG Files (*.png)",)
+        fileName = QFileDialog.getOpenFileName(self,"Open File","./","All Files (*);;Python Files (*.py);; PNG Files (*.png)",)
         self.txtLocation.insertPlainText(fileName[0])
 
     def load_content(self):
-        pass
+        self.lstEntries.setEnabled(True)
+        file = open('test.txt', 'r')
+
+        for entry in file:
+            print(entry)
+            self.lstEntries.addItem(QListWidgetItem(entry))
 
 
 def main():
